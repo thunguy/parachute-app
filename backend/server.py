@@ -58,10 +58,8 @@ def get_lowest_premiums():
 
     for term in terms:
         for coverage in coverages:
-            # print((term, coverage), 'line 54')
             response = requests.get(f'http://5be45b4482db.ngrok.io/policies?term={term}&coverage_amount={coverage}')
             data = json.loads(response.text)
-            # print(json.loads(response.text), 'line 57')
             if data['policies']:
                 results.setdefault((term, coverage), get_lowest_premium(data))
             
