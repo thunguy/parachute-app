@@ -21,8 +21,8 @@ def get_insurance_prices():
     except:
         premiums = API_LOWEST_PRICES
 
-    terms = sorted(list(set([t for t, c in premiums])))
-    coverages = sorted(list(set([c for t, c in premiums])))
+    terms = sorted(set([t for t, c in premiums]))
+    coverages = sorted(set([c for t, c in premiums]))
     
     adj_terms = get_adjacent_nums(terms, int(term))
     adj_coverages = get_adjacent_nums(coverages, int(coverage))
